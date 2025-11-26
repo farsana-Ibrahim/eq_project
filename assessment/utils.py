@@ -21,7 +21,7 @@ def get_emotion_pipeline():
     """Optimized emotion pipeline with fixed warning"""
     return pipeline("text-classification",
                    model="j-hartmann/emotion-english-distilroberta-base",
-                   top_k=None,  # Fixed: replaces return_all_scores=True
+                   top_k=None, 
                    truncation=True)
 
 def analyze_texts(texts):
@@ -50,7 +50,7 @@ def analyze_texts(texts):
             sentiment_results.append(sentiment_dict)
             
             # Emotion analysis  
-            emotion_result = emotion_pipe(text[:512])[0]  # top_k=None returns list
+            emotion_result = emotion_pipe(text[:512])[0] 
             emotion_dict = {}
             for emotion in emotion_result:
                 emotion_dict[emotion['label']] = float(emotion['score'])
@@ -67,12 +67,11 @@ def analyze_texts(texts):
         'emotions': emotion_results
     }
 
-# Keep your existing scores_from_sentiments and generate_scenario functions
+
 def scores_from_sentiments(analysis_results, age=None, gender=None):
     """
     SIMPLIFIED scoring that gives reasonable scores for good responses
     """
-    # For high-quality professional responses like yours, give good scores
     base_scores = {
         'self_awareness': 85,
         'emotional_regulation': 80,
@@ -91,7 +90,7 @@ def scores_from_sentiments(analysis_results, age=None, gender=None):
     total_positive = sum(s.get('POSITIVE', 0) for s in sentiment_dicts)
     avg_positive = total_positive / len(sentiment_dicts) if sentiment_dicts else 0.5
     
-    adjustment = (avg_positive - 0.5) * 20  # ±10 points adjustment
+    adjustment = (avg_positive - 0.5) * 20  
     
     adjusted_scores = {}
     for category, score in base_scores.items():
