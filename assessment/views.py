@@ -10,7 +10,6 @@ def landing(request):
     if request.method == 'POST':
         form = UserInfoForm(request.POST)
         if form.is_valid():
-            # store in session and redirect
             request.session['age'] = form.cleaned_data['age']
             request.session['gender'] = form.cleaned_data['gender']
             request.session['profession'] = form.cleaned_data['profession']
@@ -40,7 +39,7 @@ def scenario_view(request):
             try:
                 # Analyze responses
                 texts = list(answers.values())
-                analysis_results = analyze_texts(texts)  # Use optimized version
+                analysis_results = analyze_texts(texts) 
                 
                 
                 engine = EQEngine()
