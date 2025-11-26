@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>EQ Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+h2, h3, h4 {
+    color: #1f4e79;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+textarea, input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 16px;
+    background-color: #1f4e79;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #163d5a;
+}
+
+.response {
+    white-space: pre-wrap; /* preserves line breaks */
+    word-wrap: break-word;  /* wraps long words */
+    max-width: 100%;
+    padding: 8px;
+    background-color: #f0f4f8;
+    border-left: 3px solid #1f4e79;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+small {
+    color: #666;
+}
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <h2>Advanced EQ Assessment</h2>
+    {% block content %}{% endblock %}
+    <hr>
+    <small>Submission uses a transformer-based sentiment model to map responses to EQ categories.</small>
+  </div>
+  <!-- Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

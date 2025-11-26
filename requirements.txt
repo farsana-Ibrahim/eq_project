@@ -1,0 +1,5 @@
+Django>=4.2
+transformers>=4.0
+torch>=1.9    # or cpu-only if preferred (pip install torch --index-url https://download.pytorch.org/whl/cpu)
+sentencepiece
+gunicorn

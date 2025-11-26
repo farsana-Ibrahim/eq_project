@@ -1,0 +1,16 @@
+{% extends 'assessment/base.html' %}
+{% block content %}
+<div class="card">
+  <h3>Scenario</h3>
+  <p>{{ scenario }}</p>
+</div>
+
+<div class="card">
+  <h3>Your Responses</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Answers</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'assessment/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h3>Results</h3>
+    
+    <!-- EQ Level Feedback Section -->
+    <div class="card" style="border-left: 4px solid {{ eq_feedback.color }}; background-color: #f8f9fa;">
+        <h4>Overall EQ Assessment: {{ eq_feedback.level }}</h4>
+        <p><strong>Overall EQ Score:</strong> {{ overall }} / 100</p>
+        <p><strong>Feedback:</strong> {{ eq_feedback.feedback }}</p>
+    </div>
+
+    <!-- Visualization -->
+    <div class="card">
+        <h4>EQ Category Breakdown</h4>
+        <canvas id="categoriesChart" width="600" height="300"></canvas>
+    </div>
+
+    <!-- Detailed Scores -->
+    <div class="card">
+        <h4>Detailed Scores</h4>
+        <ul>
+            {% for k, v in categories.items %}
+            <li><strong>{{ k|capfirst|cut:"_" }}:</strong> {{ v }} / 100</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Response Review -->
+    <div class="card">
+        <h4>Your Responses</h4>
+        <ol>
+            {% for k,v in submission.answers.items %}
+            <li>
+                <div class="response">{{ v|linebreaksbr }}</div>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const labels = {{ labels_json|safe }};
+    const data = {{ data_json|safe }};
+    const ctx = document.getElementById('categoriesChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'EQ Category Scores',
+                data: data,
+                backgroundColor: [
+                    'rgba(31, 78, 121, 0.8)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(99, 179, 237, 0.7)',
+                    'rgba(31, 78, 121, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(99, 179, 237, 0.6)'
+                ],
+                borderColor: 'rgba(31, 78, 121, 1)',
+                borderWidth: 1,
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: '#1f4e79',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    cornerRadius: 6
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        stepSize: 10,
+                        color: '#333',
+                        font: {
+                            size: 14
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#333',
+                        font: {
+                            size: 14
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
