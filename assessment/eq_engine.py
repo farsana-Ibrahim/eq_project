@@ -1,13 +1,11 @@
-# eq_engine.py — FINAL VERSION (Balanced + Accurate)
-
 from transformers import pipeline
 from functools import lru_cache
 import numpy as np
 
 
-# --------------------------
+
 # 1. Load models only once
-# --------------------------
+
 
 @lru_cache(maxsize=1)
 def sentiment_model():
@@ -23,10 +21,6 @@ def emotion_model():
                     top_k=None,
                     truncation=True)
 
-
-# --------------------------
-# 2. Final EQ Engine
-# --------------------------
 
 class EQEngine:
 
