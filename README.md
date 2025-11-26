@@ -259,3 +259,22 @@ Leadership assessment
 Chat-based coaching
 
 Emotional wellness apps
+
+pages:
+
+landing.html:
+<img width="1598" height="773" alt="image" src="https://github.com/user-attachments/assets/1b9a3e5f-f3f1-47d9-ad94-9cf28debcc6f" />
+
+scenario.html:
+<img width="1564" height="776" alt="image" src="https://github.com/user-attachments/assets/774b4969-e2de-4199-85fa-ec290db940ef" />
+
+results.html:
+<img width="1573" height="771" alt="image" src="https://github.com/user-attachments/assets/b0379c4d-4e6c-44b4-af9f-10e831dcd925" />
+<img width="1577" height="768" alt="image" src="https://github.com/user-attachments/assets/a3e8e67a-84e7-4aac-9c7c-96a99506466b" />
+<img width="1525" height="765" alt="image" src="https://github.com/user-attachments/assets/181ba589-4e00-4697-97c7-331295cbb3a3" />
+
+
+
+
+
+
